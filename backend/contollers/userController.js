@@ -6,7 +6,6 @@ const {
 } = require('../services/users');
 
 class UserController {
-
   async register(req, res, next) {
     const { email, password } = req.body;
     const user = await userRegister({ email, password });

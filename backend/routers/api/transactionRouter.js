@@ -3,12 +3,17 @@ const router = express.Router();
 
 const { TransactionController } = require('../../contollers');
 const { asyncWrapper } = require('../../helpers');
+
+const { authMiddleware } = require('../../middlewares');
+
 const {
   addTransctionValidation,
 } = require('../../middlewares/validationMiddlewares');
 
+
 router.get(
   '/:year/:month/:type',
+  authMiddleware,
   asyncWrapper(TransactionController.getMonthTransactions),
 );
 
@@ -22,5 +27,6 @@ router.post(
   // addTransactionValidation,
   asyncWrapper(TransactionController.addTransaction),
 );
+
 
 module.exports = router;

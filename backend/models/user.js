@@ -15,8 +15,22 @@ const userSchema = Schema(
       type: String,
       minlength: 6,
     },
+
+    tokenLong: {
+      type: String,
+      default: null,
+    },
+    tokenShort: {
+      type: String,
+      default: null,
+    },
     avatarURL: {
       type: String,
+      default: '',
+
+    avatarURL: {
+      type: String,
+
     },
     balance: {
       type: Number,
@@ -26,7 +40,6 @@ const userSchema = Schema(
       type: Boolean,
       default: false,
     },
-
     tokenLong: {
       type: String,
       default: null,
@@ -39,6 +52,7 @@ const userSchema = Schema(
   },
   { versionKey: false, timestamps: true },
 );
+
 
 // userSchema.methods.setPassword = function (password) {
 //   this.password = bcrypt.hashSync(password, bcrypt.genSaltSync(10));

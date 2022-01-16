@@ -1,12 +1,11 @@
 const { NotFoundError } = require('../../helpers');
 const { Transaction } = require('../../models');
 
-const getMonthTransactions = async data => {
+const getMonthTransactions = async ({ year, month, type }) => {
   // const { _id } = req.user;
+  const searchData = type === 'all' ? { year, month } : { year, month, type };
 
-  const result = await Transaction.find(data);
-
-  console.log(result[0]);
+  const result = await Transaction.find(searchData);
 
   if (!result[0]) {
     throw new NotFoundError(

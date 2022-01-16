@@ -1,42 +1,50 @@
-const jwt = require('jsonwebtoken')
-const { NotAuthorizedError } = require('../helpers/errors')
-const { User } = require('../models')
+const jwt = require('jsonwebtoken');
+const { NotAuthorizedError } = require('../helpers/errors');
+const { User } = require('../models');
 
-const authMiddleware = async(req, res, next) => {
+const { ACCES_TOKEN_SECRET } = process.env;
+
+const authMiddleware = async (req, res, next) => {
+  const { authorization } = req.headers;
+  const [tokenType, tokenShort] = authorization.split(' ');
+
   try {
-    const { authorization } = req.headers
-
     if (!authorization) {
-      next(new NotAuthorizedError('Please, provide a token in request authorization header'))
+      next(
+        new NotAuthorizedError(
+          'Please, provide a token in request authorization header',
+        ),
+      );
     }
-  
-    const [tokenType, shortToken] = await authorization.split(' ')
+
     if (tokenType !== 'Bearer') {
-      next(new NotAuthorizedError('Invalid token'))
+      next(new NotAuthorizedError('Invalid token'));
     }
-    if (!shortToken) {
-      next(new NotAuthorizedError('Please, provide a token'))
-    }
-
-    const verify = jwt.verify(shortToken, process.env.ACCES_TOKEN_SECRET)
-    if (!verify) {
-      next(new NotAuthorizedError('Invalid token'))
+    if (!tokenShort) {
+      next(new NotAuthorizedError('Please, provide a token'));
     }
 
-    const user = await User.findOne({ _id: verify._id })
-
-    if (!user || !user.shortToken) {
-      next(new NotAuthorizedError('Not authorized'))
+    const { id } = jwt.verify(tokenShort, ACCES_TOKEN_SECRET);
+    if (!id) {
+      next(new NotAuthorizedError('Invalid token'));
     }
 
-    req.token = shortToken
-    req.user = user
-    next()
-  } catch (err) {
-    next(new NotAuthorizedError('Invalid token'))
+    const user = await User.findById(id);
+    if (!user || !user.tokenShort) {
+      next(new NotAuthorizedError('Not authorized'));
+    }
+
+    req.token = tokenShort;
+    req.user = user;
+    next();
+  } catch (error) {
+    if (error.message === 'Invalid sugnature') {
+      error.status = 401;
+    }
+    next(error);
   }
-}
+};
 
 module.exports = {
-  authMiddleware
-}
+  authMiddleware,
+};

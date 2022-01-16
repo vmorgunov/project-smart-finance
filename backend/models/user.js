@@ -15,31 +15,32 @@ const userSchema = Schema(
       type: String,
       minlength: 6,
     },
-
     tokenLong: {
+      type: String,
+      default: null,
+    },
+    tokenShort: {
       type: String,
       default: null,
     },
     avatarURL: {
       type: String,
-      required: true,
+      default: '',
     },
     balance: { type: Number },
     verify: {
       type: Boolean,
       default: false,
     },
-    verificationToken: {
-      type: String,
-      required: [true, 'Verify token is required'],
-    },
   },
   { versionKey: false, timestamps: true },
 );
-userSchema.pre('save', async function() {
+userSchema.pre('save', async function () {
   if (this.isNew || this.isModified) {
- 
-    this.password = await bcrypt.hashSync(this.password, bcrypt.genSaltSync(10))
+    this.password = await bcrypt.hashSync(
+      this.password,
+      bcrypt.genSaltSync(10),
+    );
   }
 });
 

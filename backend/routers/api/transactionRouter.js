@@ -3,15 +3,12 @@ const router = express.Router();
 
 const { TransactionController } = require('../../contollers');
 const { asyncWrapper } = require('../../helpers');
+const { authMiddleware } = require('../../middlewares');
 
 router.get(
   '/:year/:month/:type',
+  authMiddleware,
   asyncWrapper(TransactionController.getMonthTransactions),
-);
-
-router.get(
-  '/:year/:month/:type/sum',
-  asyncWrapper(TransactionController.getMonthTransactionsSum),
 );
 
 module.exports = router;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Title, Span, Line } from './ReportStatistic.styled';
+import { Container, Title, Span, SpanRed, Line } from './ReportStatistic.styled';
 
 export const ReportStatistic = ({ costs, income }) => {
   let totalCosts = 0;
@@ -22,7 +22,7 @@ export const ReportStatistic = ({ costs, income }) => {
 
   return (
     <Container>
-      <Title>Costs:{<Span>- {totalCosts} UAN</Span>} </Title>
+      <Title>Costs:{<SpanRed>- {totalCosts} UAN</SpanRed>} </Title>
       <Line />
       <Title>Income:{<Span>+ {totalIncome} UAN</Span>} </Title>
     </Container>

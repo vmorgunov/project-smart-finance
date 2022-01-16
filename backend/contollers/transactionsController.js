@@ -23,7 +23,17 @@ class TransactionController {
 
   // };
 
-  async getMonthTransactionsSum(req, res, next) {}
+  async getMonthTransactionsSum(req, res, next) {
+    // const { _id } = req.user;
+    const { year, month, type } = req.params;
+    const result = await getMonthTransactionsSum({ year, month, type });
+
+    res.status(200).json({
+      status: 'success',
+      code: 200,
+      total: result,
+    });
+  }
 
   async getMonthTransactions(req, res, next) {
     // const { _id } = req.user;

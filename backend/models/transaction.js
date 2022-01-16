@@ -1,15 +1,15 @@
 const { Schema, model, SchemaTypes } = require('mongoose');
-const Joi = require('joi');
-const { string } = require('joi');
+// const Joi = require('joi');
+// const { string } = require('joi');
 
 const transactionSchema = Schema(
   {
-    dateCreated: {
+    date: {
       type: Date,
       required: true,
     },
-    typeTransaction: {
-      type: Boolean,
+    type: {
+      type: String,
       required: true,
     },
     category: {

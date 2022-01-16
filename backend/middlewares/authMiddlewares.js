@@ -10,26 +10,26 @@ const authMiddleware = async(req, res, next) => {
       next(new NotAuthorizedError('Please, provide a token in request authorization header'))
     }
   
-    const [tokenType, verificationToken] = await authorization.split(' ')
+    const [tokenType, shortToken] = await authorization.split(' ')
     if (tokenType !== 'Bearer') {
       next(new NotAuthorizedError('Invalid token'))
     }
-    if (!verificationToken) {
+    if (!shortToken) {
       next(new NotAuthorizedError('Please, provide a token'))
     }
 
-    const verify = jwt.verify(verificationToken, process.env.ACCES_TOKEN_SECRET)
+    const verify = jwt.verify(shortToken, process.env.ACCES_TOKEN_SECRET)
     if (!verify) {
       next(new NotAuthorizedError('Invalid token'))
     }
 
     const user = await User.findOne({ _id: verify._id })
 
-    if (!user || !user.verificationToken) {
+    if (!user || !user.shortToken) {
       next(new NotAuthorizedError('Not authorized'))
     }
 
-    req.token = verificationToken
+    req.token = shortToken
     req.user = user
     next()
   } catch (err) {

@@ -6,10 +6,11 @@ const transactionSchema = Schema(
   {
     date: {
       type: Date,
-      required: true,
+      // required: true,
     },
     type: {
       type: String,
+      enum: ['income', 'costs'],
       required: true,
     },
     category: {
@@ -32,11 +33,11 @@ const transactionSchema = Schema(
     month: { type: String },
     year: { type: String },
 
-    owner: {
-      type: Schema.Types.ObjectId,
-      ref: 'user',
-      required: true,
-    },
+    // owner: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'user',
+    //   required: true,
+    // },
   },
   { versionKey: false, timestamps: true },
 );

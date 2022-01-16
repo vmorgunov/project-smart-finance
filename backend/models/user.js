@@ -15,6 +15,7 @@ const userSchema = Schema(
       type: String,
       minlength: 6,
     },
+
     tokenLong: {
       type: String,
       default: null,
@@ -26,23 +27,32 @@ const userSchema = Schema(
     avatarURL: {
       type: String,
       default: '',
+
+    avatarURL: {
+      type: String,
+
     },
-    balance: { type: Number },
+    balance: {
+      type: Number,
+      default: null,
+    },
     verify: {
       type: Boolean,
       default: false,
     },
+    tokenLong: {
+      type: String,
+      default: null,
+    },
+
+    tokenShort: {
+      type: String,
+      required: [true, 'Verify token is required'],
+    },
   },
   { versionKey: false, timestamps: true },
 );
-userSchema.pre('save', async function () {
-  if (this.isNew || this.isModified) {
-    this.password = await bcrypt.hashSync(
-      this.password,
-      bcrypt.genSaltSync(10),
-    );
-  }
-});
+
 
 // userSchema.methods.setPassword = function (password) {
 //   this.password = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
@@ -54,4 +64,6 @@ userSchema.pre('save', async function () {
 
 const User = model('user', userSchema);
 
-module.exports = User;
+module.exports = {
+  User,
+};

@@ -1,3 +1,5 @@
+import React from "react";
+
 import { AuthForm } from "../../components/AuthForm";
 
 import cabagesIcon from '../../images/twoKapusta.svg';

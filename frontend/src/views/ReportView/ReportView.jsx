@@ -1,5 +1,7 @@
 import React from 'react';
 
+import MonthPicker from '../../components/MonthPicker/MonthPicker';
+
 import {
     ReportContainer,
     ReportNav,
@@ -17,7 +19,8 @@ return (
 
             <ReportComponent>7.  "Баланс: 55 000.00 UAH" </ReportComponent>
         
-            <ReportComponent> 24.  "Текущий период " <br />ноябрь 2019</ReportComponent>
+            <MonthPicker/>
+            
         </ReportNav>
 
         <ReportCostsAndIncome>25.  "Расходы: - 18 000.00 грн. / Доходы: + 45 000.00 грн."</ReportCostsAndIncome>

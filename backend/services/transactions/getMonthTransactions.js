@@ -3,6 +3,7 @@ const { Transaction } = require('../../models');
 
 const getMonthTransactions = async ({ year, month, type }) => {
   // const { _id } = req.user;
+
   const searchData = type === 'all' ? { year, month } : { year, month, type };
 
   const result = await Transaction.find(searchData);

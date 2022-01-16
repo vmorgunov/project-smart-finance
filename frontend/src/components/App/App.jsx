@@ -1,23 +1,23 @@
+import { Routes, Route } from 'react-router-dom';
 import { AppBar } from "../AppBar";
-import HomeView from "../../views/HomeView/HomeView.jsx";
+
+import AuthView from "../../views/AuthView/AuthView.jsx";
 import ReportView from "../../views/ReportView/ReportView.jsx";
 
-import cabages from '../../images/mnogoKapusta.svg'
 import {
-    Container,
-    Background,
-    BgImg
+    Container
 } from "./App.styled.jsx";
 
 export const App = () => {
     return (
         <Container>
             <AppBar />
-            <Background>
-                <BgImg src={cabages} alt="Много капусты" />
-            </Background>
-            <HomeView />
-            <ReportView />
+
+            <Routes>
+                <Route exact path="/" element={<AuthView />} />
+                <Route exact path="/report" element={<ReportView />} />
+            </Routes>
+
         </Container>
     );
 }

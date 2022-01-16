@@ -72,7 +72,7 @@ export const ButtonsContainer = styled.div`
     margin-top: 40px;
 `;
 
-export const SignButton = styled.button`
+export const FormSubmitBtn = styled.button`
     height: 44px;
     width: 125px;
     padding: 12px 15px 12px 15px;
@@ -90,7 +90,7 @@ export const SignButton = styled.button`
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: #52555F;
-    transition: all 250ms ease-in;
+    transition: all 250ms ease-out;
     &:not(:last-child) {
         margin-right: 15px;
     }

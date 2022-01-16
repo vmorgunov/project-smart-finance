@@ -1,16 +1,22 @@
 import { AuthForm } from "../../components/AuthForm";
 
 import cabagesIcon from '../../images/twoKapusta.svg';
+import cabagesBg from '../../images/mnogoKapusta.svg';
 import {
     Container,
     Title,
     UnderTitle,
     TitlesContainer,
     CabagesIcon,
-} from "./HomeView.styled";
+    Background,
+    BgImg
+} from "./AuthView.styled";
 
-const HomeView = () => {
-    return (
+const AuthView = () => {
+    return (<>
+        <Background>
+            <BgImg src={cabagesBg} alt="Много капусты" />
+        </Background>
         <Container>
             <TitlesContainer>
                 <Title>Kapusta</Title>
@@ -19,7 +25,8 @@ const HomeView = () => {
             </TitlesContainer>
             <AuthForm />
         </Container>
+    </>
     )
 }
 
-export default HomeView;
+export default AuthView;

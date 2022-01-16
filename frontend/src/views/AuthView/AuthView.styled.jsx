@@ -51,3 +51,15 @@ export const UnderTitle = styled.h2`
 export const CabagesIcon = styled.img`
     margin-top: 155px;
 `;
+
+export const Background = styled.div`
+    position: absolute;
+    height: 526px;
+    background: #F5F6FB;
+    border-bottom-left-radius: 100px;
+    z-index: -1;
+`;
+
+export const BgImg = styled.img`
+    margin: 26px 0 0 10px;
+`;

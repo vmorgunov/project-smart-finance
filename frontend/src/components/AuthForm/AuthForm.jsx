@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import googleIcon from '../../images/googleIcon.svg'
 import {
     Container,
@@ -8,35 +10,62 @@ import {
     FormInput,
     GoogleIcon,
     ButtonsContainer,
-    SignButton
+    FormSubmitBtn
 } from './AuthForm.styled.jsx';
 
 export const AuthForm = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleChange = (e) => {
+        const { name, value } = e.currentTarget;
+
+        switch (name) {
+            case 'email':
+                setEmail(value);
+                break;
+            case 'password':
+                setPassword(value);
+                break;
+            default:
+                return;
+        }
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        resetForm();
+    }
+
+    const resetForm = () => {
+        setEmail('');
+        setPassword('');
+    }
+
     return (
         <Container>
             <Note>Вы можете авторизоваться с помощью Google Account:</Note>
             <GoogleButton>
-                <GoogleIcon src={googleIcon} />
-                Google</GoogleButton>
+                <GoogleIcon src={googleIcon} />Google
+            </GoogleButton>
             <Note>Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:</Note>
-            <Form>
+
+            <Form onSubmit={handleSubmit} autoComplete='off'>
                 <FormLabel>
                     Электронная почта:
-                    <FormInput
-                        type="email"
-                        name="email"
+                    <FormInput type="email" name="email" value={email} onChange={handleChange}
                     />
                 </FormLabel>
                 <FormLabel>
                     Пароль:
-                    <FormInput
-                        type="password"
-                        name="password"
+                    <FormInput type="password" name="password" value={password} onChange={handleChange}
                     />
                 </FormLabel>
+
                 <ButtonsContainer>
-                    <SignButton type="submit">Войти</SignButton>
-                    <SignButton type="submit">Регистрация</SignButton>
+                    <FormSubmitBtn type="submit">Войти</FormSubmitBtn>
+                    <FormSubmitBtn type="submit">Регистрация</FormSubmitBtn>
                 </ButtonsContainer>
             </Form>
         </Container>

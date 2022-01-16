@@ -15,10 +15,7 @@ const userSchema = Schema(
       type: String,
       minlength: 6,
     },
-    token: {
-      type: String,
-      default: null,
-    },
+
     tokenLong: {
       type: String,
       default: null,

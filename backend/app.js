@@ -16,7 +16,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/v1/users', userRouter);
-// app.use('api/v1/transactions', transactionRouter);
+app.use('/api/v1/transactions', transactionRouter);
+
 
 app.use(errorHandler);
 app.use((req, res) => {

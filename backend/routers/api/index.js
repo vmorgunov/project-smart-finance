@@ -1,5 +1,7 @@
-const userRouter =require('./userRouter');
+const userRouter = require('./userRouter');
+const transactionRouter = require('./transactionRouter');
 
-module.exports ={
-    userRouter,
+module.exports = {
+  userRouter,
+  transactionRouter,
 };

@@ -1,7 +1,13 @@
+import {
+    Container, Avatar, Name, Button
+} from "./UserMenu.styled.jsx";
+
 export const UserMenu = () => {
     return (
-        <>
-            <span>Выйти</span>
-        </>
+        <Container>
+            <Avatar><span>U</span></Avatar>
+            <Name>User Name</Name>
+            <Button type="button">Выйти</Button>
+        </Container>
     )
 }

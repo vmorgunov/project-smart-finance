@@ -1,5 +1,6 @@
 import { AppBar } from "../AppBar";
 import HomeView from "../../views/HomeView/HomeView.jsx";
+import ReportView from "../../views/ReportView/ReportView.jsx";
 
 import cabages from '../../images/mnogoKapusta.svg'
 import {
@@ -16,6 +17,7 @@ export const App = () => {
                 <BgImg src={cabages} alt="Много капусты" />
             </Background>
             <HomeView />
+            <ReportView />
         </Container>
     );
 }

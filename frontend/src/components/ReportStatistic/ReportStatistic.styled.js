@@ -10,7 +10,7 @@ export const Title = styled.p`
   line-height: 16px;
   letter-spacing: 0.04em;
 
-  color: #52555f;
+  color: var(--text-color-3);
 
   @media screen and (min-width: 768px) {
     margin-right: 20px;
@@ -20,7 +20,8 @@ export const Title = styled.p`
 export const Span = styled.span`
   display: block;
   margin-top: 5px;
-  color: #407946;
+
+  color: var(--accent-color-4);
 
   @media screen and (min-width: 768px) {
     display: inline;
@@ -28,7 +29,18 @@ export const Span = styled.span`
     margin-top: 0;
   }
 `;
+export const SpanRed = styled.span`
+  display: block;
+  margin-top: 5px;
 
+  color: var(--accent-color-3);
+
+  @media screen and (min-width: 768px) {
+    display: inline;
+    margin-left: 15px;
+    margin-top: 0;
+  }
+`;
 export const Line = styled.div`
   margin-right: 10px;
   height: 71px;
@@ -42,7 +54,6 @@ export const Line = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  color: red;
   align-items: center;
   justify-content: center;
   text-align: center;

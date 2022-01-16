@@ -19,10 +19,10 @@ class UserController {
   }
 
   async logOut(req, res, next) {
-    const { _id, verificationToken } = req.user;
-    await userLogout({ _id, verificationToken });
-    res.status(204);
-    res.end();
+    const { _id, tokenShort } = req.user;
+    await userLogout({ _id, tokenShort });
+    res.status(200).json({message:"logout successful"});
+
   }
 
   async updateBalance(req, res, next) {

@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { NotAuthorizedError } = require('../helpers/errors');
+const { AppError } = require('../helpers');
 const { User } = require('../models');
 
 
@@ -9,7 +9,7 @@ const authMiddleware = async (req, res, next) => {
   
     if (!authorization) {
       next(
-        new NotAuthorizedError(
+          AppError.NotAuthorizedError(
           'Please, provide a token in request authorization header',
         ),
       );
@@ -17,29 +17,29 @@ const authMiddleware = async (req, res, next) => {
  const [tokenType, tokenShort] = authorization.split(' ');
 
     if (tokenType !== 'Bearer') {
-      next(new NotAuthorizedError('Invalid token'));
+      next(AppError.NotAuthorizedError('Invalid token'));
     }
 
     if (!tokenShort) {
-      next(new NotAuthorizedError('Please, provide a token'));
+      next(AppError.NotAuthorizedError('Please, provide a token'));
     }
 
     const verify = jwt.verify(tokenShort, process.env.ACCES_TOKEN_SECRET);
   
     if (!verify) {
-      next(new NotAuthorizedError('Invalid token'));
+      next(AppError.NotAuthorizedError('Invalid token'));
     }
 
     const user = await User.findOne({ _id: verify._id })
     if (!user || !user.tokenShort) {
-      next(new NotAuthorizedError('Not authorized'));
+      next(AppError.NotAuthorizedError('User not authorized'));
     }
 
     req.token = tokenShort;
     req.user = user;
     next();
   } catch (error) {
-    next(new NotAuthorizedError('uncnown'))
+    next(AppError.NotAuthorizedError('User not authorized'))
   }
 };
 

@@ -28,16 +28,14 @@ const transactionSchema = Schema(
       required: [true, 'total must be enter'],
       min: 0.01,
     },
-
     day: { type: String },
     month: { type: String },
     year: { type: String },
-
-    // owner: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: 'user',
-    //   required: true,
-    // },
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: 'user',
+      required: true,
+    },
   },
   { versionKey: false, timestamps: true },
 );

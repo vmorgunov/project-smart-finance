@@ -1,0 +1,34 @@
+import styled from "@emotion/styled";
+
+export const InputStyle = styled.input`
+  
+  padding: ${({paddingInput}) => paddingInput};
+  margin: ${({marginInput}) => marginInput ? marginInput : 0};
+  width: ${({widthInput}) => widthInput ?`${widthInput}px` : '100%'};
+  height: 44px;
+
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
+  font-style: normal;
+  font-weight: bold;
+  text-align: ${({textAlignInput}) => textAlignInput ? textAlignInput : 'left'};
+
+  box-sizing: border-box;
+  outline:none;
+
+  border-top-right-radius: ${({borderRadius}) => `${borderRadius.topRight}px`};
+  border-top-left-radius: ${({borderRadius}) => `${borderRadius.topLeft}px`};
+  border-bottom-right-radius: ${({borderRadius}) => `${borderRadius.bottomRight}px`};
+  border-bottom-left-radius: ${({borderRadius}) => `${borderRadius.bottomLeft}px`};
+  
+  border: 2px solid var(--bg-color);
+  border-bottom: ${({ border }) => `${border?.bottom || border?.bottom === 0 ? border.bottom : 2}px solid var(--bg-color)`};
+  border-right: ${({ border }) => `${border?.right || border?.right === 0 ? border.right : 2}px solid var(--bg-color)`};
+  background: none;
+
+  &::placeholder {
+    color: var(--color-placeholder);
+    font-weight: normal;
+    }
+`;

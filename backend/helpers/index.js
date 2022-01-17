@@ -1,10 +1,10 @@
-const { AppError, NotFoundError, RegistrationConflictError,NotAuthorizedError}= require('./errors')
-const { asyncWrapper,errorHandler} = require('./apiHelpers');
+const AppError = require('./errors');
+const { asyncWrapper, errorHandler } = require('./apiHelpers');
+const checkUserBalance = require('./checkBalance');
 
 module.exports = {
-    asyncWrapper,
-    errorHandler,
-    NotFoundError,
-    RegistrationConflictError,
-    NotAuthorizedError
-  };
+  AppError,
+  asyncWrapper,
+  errorHandler,
+  checkUserBalance,
+};

@@ -2,9 +2,9 @@ import React from "react";
 
 import {
     CurrentPeriodTitle,
-    CurrentPickeredMonth ,
+    Switch ,
     ButtonSwitch,
-    CurrentPeriodData,
+    SwitchData,
     ArrowIcon
 } from './MonthPicker.styled'
 
@@ -15,11 +15,11 @@ function MonthPicker() {
     return (
         <div>
             <CurrentPeriodTitle>Текущий период:</CurrentPeriodTitle>
-            <CurrentPickeredMonth>
+            <Switch>
                 <ButtonSwitch type="button" ><ArrowIcon src={prevArrowIcon} alt="prevArrowIcon"/></ButtonSwitch>
-                <CurrentPeriodData>ноябрь 2019</CurrentPeriodData>
+                <SwitchData>ноябрь 2019</SwitchData>
                 <ButtonSwitch type="button" ><ArrowIcon src={nextArrowIcon} alt="nextArrowIcon"/></ButtonSwitch>
-            </CurrentPickeredMonth>
+            </Switch>
         </div>
         
     )

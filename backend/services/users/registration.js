@@ -1,16 +1,16 @@
 
 const jwt = require('jsonwebtoken');
 const { User } = require('../../models');
-const { RegistrationConflictError } = require('../../helpers');
+const { AppError } = require('../../helpers');
 require('dotenv').config();
 
 const userRegister = async ({ email, password }) => {
   const findUserByEmail = await User.findOne({ email });
   if (findUserByEmail) {
-    throw new RegistrationConflictError('Email in use')
+    throw  AppError.RegisterConflictError()
   }
  
-  const user = new User({ email, password});
+  const user = await new User({ email, password});
   await user.save();
 
   const shortToken = jwt.sign({ _id: user._id }, process.env.ACCES_TOKEN_SECRET, { expiresIn: '1h' });

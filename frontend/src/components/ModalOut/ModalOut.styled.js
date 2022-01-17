@@ -49,26 +49,28 @@ export const Title = styled.h2`
   color: #52555f;
 `;
 
-export const Button = styled.button`
-  margin: 0 7.5px;
-  width: 125px;
-  height: 44px;
+// Стили кнопки в папке _share
 
-  font-weight: 700;
-  text-transform: uppercase;
-  border-radius: 16px;
+// export const Button = styled.button`
+//   margin: 0 7.5px;
+//   width: 125px;
+//   height: 44px;
 
-  border: 2px solid #f5f6fb;
-  transition: 0.3s ease-in-out;
-  color: #52555f;
-  background-color: transparent;
+//   font-weight: 700;
+//   text-transform: uppercase;
+//   border-radius: 16px;
 
-  &:hover {
-    border: none;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
+//   border: 2px solid #f5f6fb;
+//   transition: 0.3s ease-in-out;
+//   color: #52555f;
+//   background-color: transparent;
 
-    color: white;
-    background-color: #fd812d;
-  }
-`;
+//   &:hover {
+//     border: none;
+//     cursor: pointer;
+//     transition: 0.3s ease-in-out;
+
+//     color: white;
+//     background-color: #fd812d;
+//   }
+// `;

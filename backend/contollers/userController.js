@@ -15,7 +15,7 @@ class UserController {
   async logIn(req, res, next) {
     const { email, password } = req.body;
     const user = await userLogin({ email, password });
-    res.status(200).json(user);
+    res.status(200).json({ user: user });
   }
 
   async logOut(req, res, next) {

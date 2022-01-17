@@ -1,12 +1,12 @@
 import React from 'react';
 
 import MonthPicker from '../../components/MonthPicker/MonthPicker';
+import Reports from '../../components/Reports/Reports';
 import { ReportStatistic } from '../../components/ReportStatistic'
 import {
     ReportContainer,
     ReportNav,
     ReportComponent,
-    ReportCostsOrIncomeList,
     ReportGraph
 } from './ReportView.styled'
 
@@ -29,10 +29,7 @@ const ReportView = () => {
             income={income} */}
             </ReportStatistic>
 
-            <ReportCostsOrIncomeList>
-                <div>28. Стрелки в секциях "Расходы" и "Доходы"</div>
-                <div>26. Разметка и стили секции "Расходы" / 27. Разметка и стили секции "Доходы"</div>
-            </ReportCostsOrIncomeList>
+            <Reports/>
 
             <ReportGraph>29. График</ReportGraph>
 

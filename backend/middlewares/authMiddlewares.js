@@ -2,13 +2,11 @@ const jwt = require('jsonwebtoken');
 const { NotAuthorizedError } = require('../helpers/errors');
 const { User } = require('../models');
 
-const { ACCES_TOKEN_SECRET } = process.env;
 
 const authMiddleware = async (req, res, next) => {
-  const { authorization } = req.headers;
-  const [tokenType, tokenShort] = authorization.split(' ');
-
   try {
+  const { authorization } = req.headers; 
+  
     if (!authorization) {
       next(
         new NotAuthorizedError(
@@ -16,20 +14,23 @@ const authMiddleware = async (req, res, next) => {
         ),
       );
     }
+ const [tokenType, tokenShort] = authorization.split(' ');
 
     if (tokenType !== 'Bearer') {
       next(new NotAuthorizedError('Invalid token'));
     }
+
     if (!tokenShort) {
       next(new NotAuthorizedError('Please, provide a token'));
     }
 
-    const { id } = jwt.verify(tokenShort, ACCES_TOKEN_SECRET);
-    if (!id) {
+    const verify = jwt.verify(tokenShort, process.env.ACCES_TOKEN_SECRET);
+  
+    if (!verify) {
       next(new NotAuthorizedError('Invalid token'));
     }
 
-    const user = await User.findById(id);
+    const user = await User.findOne({ _id: verify._id })
     if (!user || !user.tokenShort) {
       next(new NotAuthorizedError('Not authorized'));
     }
@@ -38,10 +39,7 @@ const authMiddleware = async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
-    if (error.message === 'Invalid sugnature') {
-      error.status = 401;
-    }
-    next(error);
+    next(new NotAuthorizedError('uncnown'))
   }
 };
 

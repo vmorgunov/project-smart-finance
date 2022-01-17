@@ -4,11 +4,14 @@ import './style.css';
 
 import "react-datepicker/dist/react-datepicker.css";
 
+import Input from '../Input';
+import Button from '../Button';
+import SelectCategry from '../SelectCategory'
+
 import { DateSend, DateWrrap, DivCalc, FormStyle, TransactionValueWrrap } from "./Form.styled";
+
 import srcCalc from '../../../images/calculator.svg';
 import srcCalendar from '../../../images/calendar.svg';
-import Input from '../Input/Input';
-import Button from '../Button/Button';
 
 const Form = () => {
     const [cost, setCost] = useState('')
@@ -39,13 +42,7 @@ const Form = () => {
                 widthInput="287"
                 paddingInput={'0px 17px 0px 20px'}
             />
-            <Input
-                placeholder="Категория товара"
-                border={{top: 2, right: 0, bottom: 2, left: 2}}
-                borderRadius={{ topLeft: 0, topRight: 0, bottomRight: 0, bottomLeft: 0 }}
-                widthInput="188"
-                paddingInput={'0px 17px 0px 20px'}
-            />
+            <SelectCategry />
             <TransactionValueWrrap
                 margin={'0 27px 0 0'}/* desctop */
             >

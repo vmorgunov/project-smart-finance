@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { AppBar } from './components/AppBar';
 
 import AuthView from './views/AuthView/AuthView.jsx';
-import TransactionsView from './views/TransactionsView/TransactionsView.jsx';
+import TransactionsView from './views';
 import ReportView from './views/ReportView/ReportView.jsx';
 
 import { Container } from './App.styled.jsx';

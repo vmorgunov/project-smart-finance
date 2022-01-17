@@ -1,5 +1,5 @@
-import ButtonTab from "../ButtonTab/ButtonTab";
-import Form from "../Form/Form";
+import ButtonTab from "../ButtonTab";
+import Form from "../Form";
 import { ExpenseIncomeWrrap } from "./ExpenseIncome.styled";
 
 const ExpenseIncome = () => {

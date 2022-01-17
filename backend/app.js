@@ -20,8 +20,5 @@ app.use('/api/v1/transactions', transactionRouter);
 
 
 app.use(errorHandler);
-app.use((req, res) => {
-  res.status(404).json({ message: 'Not found' });
-});
 
 module.exports = app;

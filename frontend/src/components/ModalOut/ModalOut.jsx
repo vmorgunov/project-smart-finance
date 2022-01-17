@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { Button } from '../_share/index.styled'
 import {
     Backdrop,
     Container,
     CloseButton,
-    Title,
-    Button,  
+    Title, 
 } from './ModalOut.styled';
 
 

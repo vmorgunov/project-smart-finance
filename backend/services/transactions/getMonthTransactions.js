@@ -1,11 +1,11 @@
 const { NotFoundError } = require('../../helpers');
 const { Transaction } = require('../../models');
 
-const getMonthTransactions = async ({ year, month, type }) => {
-  // const { _id } = req.user;
-
-  //
-  const searchData = type === 'all' ? { year, month } : { year, month, type };
+const getMonthTransactions = async ({ year, month, type, id }) => {
+  const searchData =
+    type === 'all'
+      ? { year, month, owner: id }
+      : { year, month, type, owner: id };
 
   const transactions = await Transaction.find(searchData);
   let total = 0;
@@ -19,7 +19,7 @@ const getMonthTransactions = async ({ year, month, type }) => {
   if (transactions.length === 1) {
     total = transactions[0].sum;
   } else {
-    total = transactions.reduce((a, b) => a.sum + b.sum);
+    total = transactions.reduce((a, b) => ({ sum: a.sum + b.sum })).sum;
   }
 
   return type === 'all' ? { transactions } : { transactions, total };

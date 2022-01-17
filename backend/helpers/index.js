@@ -1,10 +1,9 @@
-const { AppError, NotFoundError, RegistrationConflictError,NotAuthorizedError}= require('./errors')
+const AppError = require('./errors')
 const { asyncWrapper,errorHandler} = require('./apiHelpers');
 
+
 module.exports = {
+    AppError,
     asyncWrapper,
     errorHandler,
-    NotFoundError,
-    RegistrationConflictError,
-    NotAuthorizedError
   };

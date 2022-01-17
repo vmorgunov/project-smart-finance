@@ -1,4 +1,4 @@
-const { NotFoundError } = require('../../helpers');
+const { checkUserBalance } = require('../../helpers');
 const { Transaction, User } = require('../../models');
 
 const addTransaction = async body => {
@@ -9,6 +9,8 @@ const addTransaction = async body => {
     type === 'income'
       ? user.balance + transactionValue
       : user.balance - transactionValue;
+
+  checkUserBalance(newUserBalance);
 
   await User.findByIdAndUpdate(
     userId,

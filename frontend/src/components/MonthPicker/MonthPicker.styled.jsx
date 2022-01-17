@@ -14,9 +14,8 @@ letter-spacing: 0.04em;
 color: rgba(82, 85, 95, 0.7);
 `;
 
-export const CurrentPickeredMonth = styled.div`
+export const Switch = styled.div`
 display: flex;
-justify-content: space-between;
 `;
 
 export const ButtonSwitch = styled.button`
@@ -40,8 +39,7 @@ height: 10px;
 }
 `;
 
-export const CurrentPeriodData = styled.span`
-font-family: Roboto;
+export const SwitchData = styled.span`
 font-style: normal;
 font-weight: bold;
 font-size: 14px;

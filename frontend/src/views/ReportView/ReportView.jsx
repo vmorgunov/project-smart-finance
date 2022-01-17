@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { ReportButton } from '../../components/ReportButton'
 import MonthPicker from '../../components/MonthPicker/MonthPicker';
 import Reports from '../../components/Reports/Reports';
 import { ReportStatistic } from '../../components/ReportStatistic'
@@ -16,7 +16,9 @@ const ReportView = () => {
     return (
         <ReportContainer>
             <ReportNav>
-                <ReportComponent> <button>23. "Вернуться на главную"</button> </ReportComponent>
+                <ReportComponent>  
+                    <ReportButton />
+                </ReportComponent>
 
                 <ReportComponent>7.  "Баланс: 55 000.00 UAH" </ReportComponent>
 

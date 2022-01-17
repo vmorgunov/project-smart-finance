@@ -9,6 +9,10 @@
   --accent-color-3: rgba(231, 25, 46, 1);
   --accent-color-4: rgba(64, 121, 70, 1);
   --modal-bg: rgba(29, 52, 106, 1);
+  --bg-tab-selected: rgba(254, 254, 254, 1);
+  --bg-tab: rgba(250, 251, 253, 1);
+  --box-shadow-tab-wrrap: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  --color-placeholder: rgba(199, 204, 220, 1);
 }
 
 * {

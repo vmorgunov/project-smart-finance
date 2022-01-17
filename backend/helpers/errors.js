@@ -1,43 +1,24 @@
 class AppError extends Error {
-    constructor(message) {
-      super(message)
-      this.status = 400
-    }
-  };
+  status;
 
-  class WrongParametersError extends AppError {
-    constructor(message) {
-      super(message)
-      this.status = 400
-    }
-  };
+  constructor(status,message) {
+    super(message)
+    this.status = status;
+   
+  }
+  static NotAuthorizedError(message){
+    return new AppError(401,message);
+  }
+  static RegisterConflictError(){
+    return new AppError(409,'Email in use');
+  }
+  static NotFoundError(){
+    return new AppError(404,'Not found');
+  }
+  static BadRequest(message){
+    return new AppError(400,message);
+  }
+ 
+}
+module.exports = AppError;
   
-  class NotFoundError extends AppError {
-    constructor(message) {
-      super(message)
-      this.status = 404
-    }
-  };
-  
-  
-  class RegistrationConflictError extends AppError {
-    constructor(message) {
-      super(message)
-      this.status = 409
-    }
-  };
-  
-  class NotAuthorizedError extends AppError {
-    constructor(message) {
-      super(message)
-      this.status = 401
-    }
-  };
-  
-  module.exports = {
-    AppError,
-    NotFoundError,
-    WrongParametersError,
-    RegistrationConflictError,
-    NotAuthorizedError
-  };

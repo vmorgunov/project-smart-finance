@@ -18,4 +18,10 @@ router.post(
   asyncWrapper(TransactionController.addTransaction),
 );
 
+router.delete(
+  '/:id',
+  authMiddleware,
+  asyncWrapper(TransactionController.deleteTransaction),
+);
+
 module.exports = router;

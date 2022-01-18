@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { register, logIn } from '../../redux/auth/authOperations.js';
 
 import googleIcon from '../../images/googleIcon.svg'
 import {
@@ -14,8 +16,10 @@ import {
 } from './AuthForm.styled.jsx';
 
 export const AuthForm = () => {
+    const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isRegister, setIsRegister] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.currentTarget;
@@ -34,13 +38,29 @@ export const AuthForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        const user = { email, password };
+        userSubmit(user);
         resetForm();
     }
 
     const resetForm = () => {
         setEmail('');
         setPassword('');
+    }
+
+    const userSubmit = ({ email, password }) => {
+        switch (isRegister) {
+            case false:
+                return dispatch(logIn({ email, password }));
+            case true:
+                return dispatch(register({ email, password }));
+            default:
+                return;
+        }
+    }
+
+    const handleRegister = () => {
+        setIsRegister(!isRegister);
     }
 
     return (
@@ -65,7 +85,7 @@ export const AuthForm = () => {
 
                 <ButtonsContainer>
                     <FormSubmitBtn type="submit">Войти</FormSubmitBtn>
-                    <FormSubmitBtn type="submit">Регистрация</FormSubmitBtn>
+                    <FormSubmitBtn type="submit" onClick={handleRegister}>Регистрация</FormSubmitBtn>
                 </ButtonsContainer>
             </Form>
         </Container>

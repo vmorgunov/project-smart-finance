@@ -2,6 +2,7 @@ const {
   getMonthTransactions,
   addTransaction,
   getMonthCategoriesSum,
+  deleteTransaction,
 } = require('../services/transactions');
 
 class TransactionController {
@@ -13,7 +14,18 @@ class TransactionController {
     res.status(201).json(result);
   }
 
-  async deleteTransaction(req, res, next) {}
+  async deleteTransaction(req, res, next) {
+    const { id } = req.params;
+    const result = await deleteTransaction(id);
+
+    res.json({
+      status: 'success',
+      message: 'contact deleted',
+      data: {
+        result,
+      },
+    });
+  }
 
   async getMonthTransactions(req, res, next) {
     const { _id: id } = req.user;

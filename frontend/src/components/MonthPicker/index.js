@@ -1,1 +1,1 @@
-export { MounthPicker } from './MonthPicker';
+export { MonthPicker } from './MonthPicker';

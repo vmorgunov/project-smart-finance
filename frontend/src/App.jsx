@@ -3,7 +3,7 @@ import { AppBar } from './components/AppBar';
 
 import AuthView from './views/AuthView/AuthView.jsx';
 import TransactionsView from './views';
-import ReportView from './views/ReportView/ReportView.jsx';
+import { ReportView } from './views';
 
 import { Container } from './App.styled.jsx';
 

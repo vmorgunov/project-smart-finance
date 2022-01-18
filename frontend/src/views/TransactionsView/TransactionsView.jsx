@@ -1,9 +1,10 @@
 import Media from 'react-media';
 
-import BtnBackspace from '../../components/Transactions/BtnBackspace/BtnBackspace';
-import  Container  from '../../components/Transactions/Container/Container';
+import {BtnBackspace} from '../../components/';
+import { Container } from '../../components';
+import {ExpenseIncome} from '../../components';
+
 import { Background, TransactionWrrap } from './TransactionsView.styled';
-import ExpenseIncome from '../../components/Transactions/ExpenseIncome/ExpenseIncome';
 
 
 const TransactionsView = () => {

@@ -1,0 +1,1 @@
+export { ReportIncome } from './ReportIncome';

@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const ReportContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 75px 110px;
+  margin: 40px 75px;
 `;
 
 export const ReportNav = styled.div`

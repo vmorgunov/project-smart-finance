@@ -15,18 +15,20 @@ color: rgba(82, 85, 95, 0.7);
 `;
 
 export const Switch = styled.div`
-display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 `;
 
 export const ButtonSwitch = styled.button`
-display: flex;
-align-items: center;
-text-align: center;
-/* padding: 0; */
-border: none;
-background-color: #fff;
-cursor: pointer;
-
+    display: flex;
+    align-items: center;
+    text-align: center;
+    /* padding: 0; */
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
 `;
 
 export const ArrowIcon = styled.img`

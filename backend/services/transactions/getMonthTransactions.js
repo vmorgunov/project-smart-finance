@@ -1,4 +1,4 @@
-const { NotFoundError } = require('../../helpers');
+const { NotFoundError } = require('../../helpers/errors');
 const { Transaction } = require('../../models');
 
 const getMonthTransactions = async ({ year, month, type, id }) => {
@@ -11,9 +11,7 @@ const getMonthTransactions = async ({ year, month, type, id }) => {
   let total = 0;
 
   if (!transactions[0]) {
-    throw new NotFoundError(
-      'No information. Try another month, year or transaction type.',
-    );
+    throw NotFoundError();
   }
 
   if (transactions.length === 1) {

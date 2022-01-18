@@ -12,6 +12,12 @@ router.get(
   asyncWrapper(TransactionController.getMonthTransactions),
 );
 
+router.get(
+  '/:year/:month/:type/:propName/:categoryType',
+  authMiddleware,
+  asyncWrapper(TransactionController.getMonthCategoriesSum),
+);
+
 router.post(
   '/:type',
   authMiddleware,

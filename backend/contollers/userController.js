@@ -21,13 +21,21 @@ class UserController {
   async logOut(req, res, next) {
     const { _id, tokenShort } = req.user;
     await userLogout({ _id, tokenShort });
-    res.status(200).json({message:"logout successful"});
-
+    res.status(200).json({ message: 'logout successful' });
   }
 
   async updateBalance(req, res, next) {
-    //
-    res.status(200).json();
+    const { _id: id } = req.user;
+    const { balance } = req.body;
+
+    const result = await updateBalance({ id, balance });
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        result,
+      },
+    });
   }
 }
 

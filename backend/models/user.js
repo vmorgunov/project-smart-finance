@@ -31,20 +31,18 @@ const userSchema = Schema(
       type: Number,
       default: null,
     },
-    verify: {
-      type: Boolean,
-      default: false,
-    },
   },
   { versionKey: false, timestamps: true },
 );
 
-userSchema.pre('save', async function() {
+userSchema.pre('save', async function () {
   if (this.isNew || this.isModified) {
- 
-    this.password = await bcrypt.hashSync(this.password, bcrypt.genSaltSync(10))
+    this.password = await bcrypt.hashSync(
+      this.password,
+      bcrypt.genSaltSync(10),
+    );
   }
-})
+});
 
 // userSchema.methods.setPassword = function (password) {
 //   this.password = bcrypt.hashSync(password, bcrypt.genSaltSync(10));

@@ -14,6 +14,9 @@ letter-spacing: 0.04em;
 color: rgba(82, 85, 95, 0.7);
 `;
 
+export const Container = styled.div`
+`;
+
 export const Switch = styled.div`
     display: flex;
     justify-content: center;
@@ -24,8 +27,7 @@ export const Switch = styled.div`
 export const ButtonSwitch = styled.button`
     display: flex;
     align-items: center;
-    text-align: center;
-    /* padding: 0; */
+    text-align: center;   
     border: none;
     background-color: #fff;
     cursor: pointer;

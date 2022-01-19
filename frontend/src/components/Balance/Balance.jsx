@@ -8,13 +8,14 @@ import {
   BalanceNavLink,
   ImgReport,
   LabelWrapper,
+  InputText,
 } from './Balance.styled';
 import report from '../../images/report.svg';
 import { getAllTransaction } from '../../redux/transactions/transactionSelectors';
 import { incrementByAmount } from '../../redux/transactions/transactionSlice';
 
 export const Balance = () => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState('00.00');
   const dispatch = useDispatch();
   const balance = useSelector(getAllTransaction);
   const onClick = e => {
@@ -30,31 +31,55 @@ export const Balance = () => {
     setValue(event.target.value);
   };
 
+  // const getVal = text => {
+  //   if (text.length === 7) return `${text.slice(0, 1)} ${text.slice(1)}`;
+  //   if (text.length === 8) return `${text.slice(0, 2)} ${text.slice(2)}`;
+  //   if (text.length === 9) return `${text.slice(0, 3)} ${text.slice(3)}`;
+  // };
+
   return (
-    <BalanceWrapper>
-      <BalanceText>Баланс:</BalanceText>
-      <LabelWrapper>
-        <BalanceInput
-          type="numeric"
-          value={value}
-          onChange={handleInputChange}
-          maxLength="10"
-          placeholder="00.00 UAH"
-          autoComplete="off"
-        />
-        {balance > 0 ? (
-          <BalanceConfirm disabled="disabled">Подтвердить</BalanceConfirm>
-        ) : (
-          <BalanceConfirm onClick={onClick} type="submit">
-            Подтвердить
-          </BalanceConfirm>
-        )}
-      </LabelWrapper>
-      <BalanceNavLink to="/report">
-        Перейти к отчетам
-        <ImgReport src={report} alt="Отчеты" />
-      </BalanceNavLink>
-    </BalanceWrapper>
+    <>
+      <BalanceWrapper>
+        <BalanceText>Баланс:</BalanceText>
+        <LabelWrapper>
+          {balance > 0 ? (
+            <>
+              <BalanceInput
+                type="text"
+                readOnly
+                value={value}
+                onChange={handleInputChange}
+                maxLength="20"
+                autoComplete="off"
+              />
+              <InputText>UAH</InputText>
+            </>
+          ) : (
+            <>
+              <BalanceInput
+                type="text"
+                value={value}
+                onChange={handleInputChange}
+                maxLength="20"
+                autoComplete="off"
+              />
+              <InputText>UAH</InputText>
+            </>
+          )}
+          {balance > 0 ? (
+            <BalanceConfirm disabled="disabled">Подтвердить</BalanceConfirm>
+          ) : (
+            <BalanceConfirm onClick={onClick} type="submit">
+              Подтвердить
+            </BalanceConfirm>
+          )}
+        </LabelWrapper>
+        <BalanceNavLink to="/report">
+          Перейти к отчетам
+          <ImgReport src={report} alt="Отчеты" />
+        </BalanceNavLink>
+      </BalanceWrapper>
+    </>
   );
 };
 

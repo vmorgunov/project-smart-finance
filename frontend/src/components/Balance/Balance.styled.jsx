@@ -38,7 +38,6 @@ export const BalanceInput = styled.input`
   margin-left: 20px;
   margin-right: 15px;
   border: 2px solid #ffffff;
-  box-sizing: border-box;
   border-radius: 16px;
   padding: 15px 20px 15px 20px;
   font-family: 'Roboto';
@@ -61,7 +60,6 @@ export const BalanceConfirm = styled.button`
   padding: 15px 18px;
   border: 2px solid #ffffff;
   background-color: var(--bg-color);
-  box-sizing: border-box;
   border-radius: 16px;
   font-family: 'Roboto';
   font-weight: normal;
@@ -72,6 +70,13 @@ export const BalanceConfirm = styled.button`
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: rgba(82, 85, 95, 0.7);
+  &:hover {
+    border: none;
+    cursor: pointer;
+
+    color: white;
+    background-color: var(--acent-color);
+  }
   @media (max-width: 768px) {
     margin-right: 110px;
   }

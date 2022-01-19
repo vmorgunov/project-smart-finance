@@ -13,6 +13,17 @@ export const Title = styled.p`
   color: var(--text-color-2);
 `;
 
+export const ImageMobile = styled.svg`
+  background-image: url(${backspace});
+  width: 18px;
+  height: 12px;
+  margin: 21px;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 22px;
+  top 21px;
+`;
+
 export const Image = styled.svg`
   background-image: url(${backspace});
   width: 18px;

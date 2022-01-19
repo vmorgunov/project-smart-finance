@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-
 import { createPortal } from 'react-dom';
 import {
     Backdrop,
@@ -9,13 +8,12 @@ import {
     Button,
     CloseIcon,
     ButtonBox
-} from './ModalOut.styled';
+} from './ModalOutMobile.styled';
 
 
 const modalRoot = document.querySelector('#modal-root')
 
-export const ModalOut = ({ onClose, onAgree, title }) => {
-  
+export const ModalOutMobile = ({ onClose, onAgree, title }) => {
   
   useEffect(() => {
     const handleKeyDown = event => {

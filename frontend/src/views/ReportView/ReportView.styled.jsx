@@ -6,7 +6,7 @@ export const ReportContainer = styled.div`
   margin: 40px 75px;
 `;
 
-export const ReportNav = styled.div`
+export const ReportHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

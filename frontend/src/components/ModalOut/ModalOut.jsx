@@ -5,14 +5,17 @@ import {
     Container,
     CloseButton,
     Title,
-    Button,  
+    Button,
+    CloseIcon,
+    ButtonBox
 } from './ModalOut.styled';
 
 
 const modalRoot = document.querySelector('#modal-root')
 
 export const ModalOut = ({ onClose, onAgree, title }) => {
-
+  
+  
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.code === 'Escape') {
@@ -38,16 +41,13 @@ export const ModalOut = ({ onClose, onAgree, title }) => {
       <Backdrop onClick={handleBackdropClick}>
         <Container>
           <CloseButton type="button" onClick={onClose}>
-          <svg width="14" height="14" viewBox="0 0 14 14" >
-            <path d="M1 1L13 13" stroke="#52555F" strokeWidth="2" />
-            <path d="M1 13L13 0.999999" stroke="#52555F" strokeWidth="2" />
-          </svg>
+            <CloseIcon/>
           </CloseButton>
           <Title>{title}</Title>
-          <div>
+          <ButtonBox>
             <Button type="button" onClick={onAgree}>Yes</Button>
             <Button type="button" onClick={onClose}>No</Button>
-          </div>
+          </ButtonBox>
         </Container>
       </Backdrop>, modalRoot);
   }

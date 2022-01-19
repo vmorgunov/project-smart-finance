@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import close from '../../images/close.svg'
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -12,14 +13,36 @@ export const Backdrop = styled.div`
   z-index: 101;
   backdrop-filter: blur(5px);
 `;
-
+export const CloseIcon = styled.svg`
+  background-image: url(${close});
+  background-repeat: no-repeat;
+  
+`;
 export const CloseButton = styled.button`
   position: absolute;
+  width: 12px;
+  height: 12px;
   top: 20px;
   right: 20px;
   cursor: pointer;
   border: none;
   background-color: inherit;
+  &:hover {
+    cursor: pointer;   
+`;
+export const MobContainer = styled.div`
+  position: fixed;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 310px;
+  height: 100%;
+
+  border-radius: 30px;
+  background-color: var(--bg-text-color);
+  box-shadow: 10px 10px 30px var(--text-color-1);
 `;
 
 export const Container = styled.div`
@@ -33,8 +56,8 @@ export const Container = styled.div`
   height: 194px;
 
   border-radius: 30px;
-  background-color: #ffffff;
-  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  background-color: var(--bg-text-color);
+  box-shadow: 10px 10px 30px var(--text-color-1);
 `;
 
 export const Title = styled.h2`
@@ -46,7 +69,7 @@ export const Title = styled.h2`
   font-family: Roboto;
   letter-spacing: 0.02em;
 
-  color: #52555f;
+  color: var(--text-color-3);
 `;
 
 export const Button = styled.button`
@@ -60,7 +83,6 @@ export const Button = styled.button`
 
   border: 2px solid #f5f6fb;
   transition: 0.3s ease-in-out;
-  color: #52555f;
   background-color: transparent;
 
   &:hover {
@@ -68,7 +90,10 @@ export const Button = styled.button`
     cursor: pointer;
     transition: 0.3s ease-in-out;
 
-    color: white;
-    background-color: #fd812d;
+    color: var(--bg-color);
+    background-color: var(--acent-color);
   }
 `;
+
+export const ButtonBox = styled.div`
+`

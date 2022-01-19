@@ -1,1 +1,2 @@
-export { default } from "./TransactionsView"
+export { default } from './TransactionsView';
+export { ReportView } from './ReportView';

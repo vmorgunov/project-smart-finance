@@ -10,7 +10,7 @@ import prevArrowIcon from '../../images/prev-arrow.svg';
 import nextArrowIcon from '../../images/next-arrow.svg';
 import { ArrowIcon, ButtonSwitch, Switch, SwitchData } from '../MonthPicker/MonthPicker.styled';
 
-const Reports = () => {
+export const Reports = () => {
 
     const clickOnSwitch = () => {
         console.log(`click`);
@@ -30,4 +30,3 @@ const Reports = () => {
     )
 }
 
-export default Reports;

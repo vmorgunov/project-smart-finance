@@ -4,16 +4,15 @@ import { NavLink } from 'react-router-dom';
 export const BalanceWrapper = styled.div`
   display: flex;
   align-items: center;
-  /* justify-content: end; */
-  /* padding: 40px 0px 40px 0px; */
+  justify-content: end;
+  padding: 40px 0px 40px 0px;
   position: relative;
-  padding: 40px 110px 40px 442px;
   background-color: var(--bg-color);
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   @media (max-width: 768px) {
-    padding: 40px 52px 60px 82px;
+    padding: 40px 0px 40px 0px;
   }
   @media (max-width: 468px) {
     padding: 30px 25px 294px 25px;
@@ -76,10 +75,11 @@ export const BalanceConfirm = styled.button`
   margin-right: 205px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: rgba(82, 85, 95, 0.7);
+  color: var(--text-color-2);
   &:hover {
-    border: none;
+    border: 2px solid #ffffff;
     cursor: pointer;
+    transition: 0.3s ease-in-out;
 
     color: white;
     background-color: var(--acent-color);
@@ -123,7 +123,7 @@ export const LabelWrapper = styled.div`
 export const InputText = styled.span`
   position: absolute;
   top: 57px;
-  right: 665px;
+  right: 505px;
   font-family: 'Roboto';
   font-weight: bold;
   font-size: 12px;
@@ -132,7 +132,7 @@ export const InputText = styled.span`
   color: var(--text-color);
   @media (max-width: 768px) {
     top: 57px;
-    right: 515px;
+    right: 410px;
   }
   @media (max-width: 320px) {
     top: 72px;

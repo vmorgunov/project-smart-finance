@@ -2,13 +2,13 @@ import React from 'react';
 
 import {List, Item} from './ReportList.styled'
 
-const ReportList = () => {
+const ReportList = ({category}) => {
     return (
         <List>
-            <Item>Item</Item>
-            <Item>Item</Item>
-            <Item>Item</Item>
-            <Item>Item</Item>
+            <Item>Item{category}</Item>
+            <Item>Item{category}</Item>
+            <Item>Item{category}</Item>
+            <Item>Item{category}</Item>
         </List>
     )
 }

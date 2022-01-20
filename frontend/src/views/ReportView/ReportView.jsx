@@ -19,6 +19,7 @@ export const ReportView = () => {
     const [newDate, setNewDate] = useState(moment(new Date()));
     const [dateMonth, setDateMonth] = useState(moment(new Date()).format('MM'));
     const [dateYears, setDateYears] = useState(moment(new Date()).format('YYYY'));
+    const [switchData, setSwitchData] = useState('Расходы');
 
     const switchMonthLeft = () => {
         setDateMonth(newDate.add(-1, 'month').format('MM'));
@@ -33,15 +34,30 @@ export const ReportView = () => {
             setDateYears(newDate.add('year').format('YYYY'));
         }
     };
+
+    const clickOnSwitch = () => {
+        if (switchData === 'Расходы') {
+            setSwitchData('Доходы');
+        }
+        if (switchData !== 'Расходы') {
+            setSwitchData('Расходы');
+        }
+    };
     
     return (
         <>
             <ReportContainer> 
                 {isMobile &&
-                    <>
-                        <ReportButton />                   
-                        <MonthPicker />
-                    </>
+                <>
+                    <ReportButton /> 
+                    
+                    <MonthPicker
+                        switchMonthLeft={switchMonthLeft}
+                        switchMonthRight={switchMonthRight}
+                        dateMonth={dateMonth}
+                        dateYears={dateYears}
+                    />
+                </>
                 }
                 {isTabletOrDesktop &&
                     <ReportHeader>
@@ -64,7 +80,10 @@ export const ReportView = () => {
                 <ReportStatistic>
                 </ReportStatistic>
 
-                <Reports />
+                <Reports
+                    switchData={switchData}
+                    clickOnSwitch={clickOnSwitch}
+                />
                 
                 <ReportGraph>29. График</ReportGraph>
             </ReportContainer>

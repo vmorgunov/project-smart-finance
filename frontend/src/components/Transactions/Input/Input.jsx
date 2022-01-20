@@ -1,6 +1,7 @@
 import { InputStyle } from "./Input.styled";
 
-const Input = ({ type,
+const Input = ({
+    type,
     border,
     borderRadius,
     placeholder,
@@ -8,6 +9,7 @@ const Input = ({ type,
     marginInput,
     paddingInput,
     textAlignInput,
+    borderColor,
     value, onChange }) => {
     return (
         <InputStyle
@@ -19,6 +21,7 @@ const Input = ({ type,
             marginInput={marginInput}
             paddingInput={paddingInput}
             textAlignInput={textAlignInput}
+            borderColor={borderColor}
 
             value={value}
             onChange={onChange}

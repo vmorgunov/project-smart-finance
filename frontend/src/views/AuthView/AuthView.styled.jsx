@@ -86,6 +86,10 @@ export const Background = styled.div`
         matches.isMobile ? '286px' :
             matches.isTablet ? '526px' :
                 matches.isDesktop && '526px'};
+    max-width: ${({ matches }) =>
+        matches.isMobile ? '320px' :
+            matches.isTablet ? '768px' :
+                matches.isDesktop && '1280px'};
     background-color: #F5F6FB;
     border-bottom-left-radius: 100px;
     z-index: -1;

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
+import { useMediaQuery } from 'react-responsive';
 import { register, logIn } from '../../redux/auth/authOperations.js';
 
 import googleIcon from '../../images/googleIcon.svg'
@@ -20,6 +21,11 @@ export const AuthForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isRegister, setIsRegister] = useState(false);
+
+    const isDesktop = useMediaQuery({ minWidth: 1280 });
+    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+    const matches = { isDesktop, isTablet, isMobile };
 
     const handleChange = (e) => {
         const { name, value } = e.currentTarget;
@@ -64,22 +70,22 @@ export const AuthForm = () => {
     }
 
     return (
-        <Container>
-            <Note>Вы можете авторизоваться с помощью Google Account:</Note>
+        <Container matches={matches}>
+            <Note matches={matches}>Вы можете авторизоваться с помощью Google Account:</Note>
             <GoogleButton>
                 <GoogleIcon src={googleIcon} />Google
             </GoogleButton>
-            <Note>Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:</Note>
+            <Note matches={matches}>Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:</Note>
 
             <Form onSubmit={handleSubmit} autoComplete='off'>
-                <FormLabel>
+                <FormLabel matches={matches}>
                     Электронная почта:
-                    <FormInput type="email" name="email" value={email} onChange={handleChange}
+                    <FormInput matches={matches} placeholder="your@email.com" type="email" name="email" value={email} onChange={handleChange}
                     />
                 </FormLabel>
-                <FormLabel>
+                <FormLabel matches={matches}>
                     Пароль:
-                    <FormInput type="password" name="password" value={password} onChange={handleChange}
+                    <FormInput matches={matches} placeholder="Пароль" type="password" name="password" value={password} onChange={handleChange}
                     />
                 </FormLabel>
 

@@ -11,10 +11,6 @@ export const Title = styled.p`
   letter-spacing: 0.04em;
 
   color: var(--text-color-3);
-
-  @media screen and (min-width: 768px) {
-    margin-right: 20px;
-  }
 `;
 
 export const Span = styled.span`

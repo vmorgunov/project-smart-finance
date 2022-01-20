@@ -1,42 +1,48 @@
 import React from 'react';
-// import { useMediaQuery } from 'react-responsive'
+import { useMediaQuery } from 'react-responsive'
 import { ReportButton } from '../../components'
-// import Balance from '../../components/Balance/Balance';
+// import {Balance} from '../../components'
 import { MonthPicker }   from '../../components';
 import { Reports } from '../../components';
 import { ReportStatistic } from '../../components';
+
+// import {ModalOutMobile} from '../../components' 
+// import { ModalOut } from '../../components';
 import {
     ReportContainer,
     ReportHeader,
-    ReportComponent,
     ReportGraph
 } from './ReportView.styled'
 
 export const ReportView = () => {
-
-// const isMobile = useMediaQuery({ minWidth: 320 });
-// const isTablet = useMediaQuery({ minWidth: 768 });
-// const isDesktop = useMediaQuery({ minWidth: 1280 });
+const isMobile = useMediaQuery({ minWidth: 320, maxWidth: 767 });
+const isTabletOrDesktop = useMediaQuery({ minWidth: 768 });
     
     return (
         <>
-            {/* {isTablet && */}
-                <ReportContainer>
+            <ReportContainer> 
+                
+                {isMobile &&
+                    <>
+                        <ReportButton />                   
+                        <MonthPicker />
+                    </>
+                }
+
+                {isTabletOrDesktop &&
                     <ReportHeader>
                         <ReportButton />
-                        <ReportComponent>7.  "Баланс: 55 000.00 UAH" </ReportComponent>
-                        {/* <Balance />. */}
+                        {/* <Balance/> */}
                         <MonthPicker />
                     </ReportHeader>
-                      
-                    <ReportStatistic>
-                        {/* costs={costs}
-            income={income} */}
+                }
+                      {/* {isTabletOrDesktop && <ModalOut />}
+                      {isMobile && <ModalOutMobile/>} */}
+                <ReportStatistic>
                     </ReportStatistic>
                     <Reports />
                     <ReportGraph>29. График</ReportGraph>
-                </ReportContainer>
-            {/* } */}
+            </ReportContainer>
         </>
     );
 }

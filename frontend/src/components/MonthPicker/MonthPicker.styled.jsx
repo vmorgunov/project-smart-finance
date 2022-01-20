@@ -1,7 +1,21 @@
 import styled from '@emotion/styled';
 
-export const CurrentPeriodTitle = styled.div`
+export const Title = styled.div`
 margin-bottom: 5px;
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 1.2;
+
+text-align: center;
+letter-spacing: 0.04em;
+
+color: rgba(82, 85, 95, 0.7);
+`;
+
+export const TitleMobile = styled.div`
+margin: 49px 0 5px;
 font-family: Roboto;
 font-style: normal;
 font-weight: normal;

@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 
 export const Button = styled.button`
     position: absolute;
-    left: 2px;
-    top: 21px;
+    left: 19px;
+    top: 15px;
 
     border:none;
     cursor: pointer;

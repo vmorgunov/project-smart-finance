@@ -1,4 +1,5 @@
-import Select from 'react-select'
+import Select from 'react-select';
+import { useMediaQuery } from 'react-responsive';
 import {SelectStyles} from './SelectCategory.styled'
 
 const CATEGORIES = [
@@ -16,12 +17,18 @@ const CATEGORIES = [
     { value: 'Доп. доход', label: 'Доп. доход', type: true },
 ]
 
-  const SelectCategory = () => (
+const SelectCategory = () => {
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
+  const isDesctop = useMediaQuery({ minWidth: 1280 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const matches = { isMobile, isTablet, isDesctop };
+  return (
     <Select
-      styles={SelectStyles}
+      styles={SelectStyles(matches)}
       options={CATEGORIES}
       placeholder='Категория товара'
     />
-);
+  )
+};
   
 export default SelectCategory;

@@ -14,7 +14,7 @@ export const ButtonStyled = styled.button`
   border-color: ${({borderColor='var(--bg-color)'}) => borderColor};
   transition: 0.3s ease-in-out;
   color: var(--text-color-3);
-  background-color: transparent;
+  background-color: ${({backgroundColor}) => backgroundColor ? backgroundColor : 'transparent'};
 
   &:hover {
     border: none;

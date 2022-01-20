@@ -1,4 +1,4 @@
-export const SelectStyles = {
+export const SelectStyles = (matches) => ({
   option: (provided, state) => ({
     ...provided,
     borderBottom: '0px dotted pink',
@@ -12,16 +12,17 @@ export const SelectStyles = {
   }),
   container: (provided, state) => ({
     ...provided,
-    border: '2px solid var(--bg-color)',
-    borderRight: '0px solid var(--bg-color)',
+    border: `2px solid ${matches.isMobile ? 'var(--bg-text-color)' : 'var(--bg-color)'}`,
+    borderRight: `${!matches.isMobile ? 0 : 2}px solid ${matches.isMobile ? 'var(--bg-text-color)' : 'var(--bg-color)'}`,
+    borderBottomRightRadius: matches.isMobile && '16px',
   }), 
   menu: (provided, state) => ({
     ...provided,
-    height: '400px',
+    height: '410px',
     border: '2px solid var(--bg-color)',
     boxShadow: '0px 3px 4px rgba(170, 178, 197, 0.4)',
-    position: 'relative',
-    top: '-8px',
+    position: 'absolute',
+    top: '32px',
   }),
   menuList: (provided, state) => ({
     ...provided,
@@ -46,8 +47,8 @@ export const SelectStyles = {
     ...provided,
     position: 'relative',
     top: '-36px',
-    right: '-155px',
-    color: 'var(--bg-color)',
+    right: matches.isMobile ? '-240px' : matches.isTablet ? '-140px' : matches.isDesctop && '-155px',
+    color: matches.isMobile ? 'var(--color-placeholder)' : 'var(--bg-color)',
     cursor: 'pointer'
   }),
   indicatorSeparator: (provided, state) => ({
@@ -56,7 +57,7 @@ export const SelectStyles = {
   }),
   control: () => ({
     // none of react-select's styles are passed to <Control />
-    width: 188,
+    width: matches.isMobile ? 278 : matches.isTablet ? 171 : matches.isDesctop && 188,
     height: 40,
   }),
   singleValue: (provided, state) => {
@@ -65,4 +66,4 @@ export const SelectStyles = {
 
     return { ...provided, opacity, transition };
   }
-}
+})

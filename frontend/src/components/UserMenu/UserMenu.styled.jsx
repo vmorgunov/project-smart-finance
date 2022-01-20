@@ -26,18 +26,30 @@ export const Name = styled.span`
     font-size: 12px;
     line-height: 14px;
     color: #52555F;
-    margin-right: 20px;
+    padding-right: 20px;
+    align-items: center;
+    border-right: 2px solid #E0E5EB;
+    height: 36px;
+    display: ${({ matches }) =>
+        matches.isMobile ? 'none' :
+            matches.isTablet ? 'flex' :
+                matches.isDesktop && 'flex'};
 `;
 
 export const Button = styled.button`
-    height: 36px;
     border: none;
-    border-left: 2px solid #E0E5EB;
-    padding: 11px 20px 11px 20px;
-    padding-left: 20px;
+    padding: ${({ matches }) =>
+        matches.isMobile ? '12px 5px 12px 5px' :
+            matches.isTablet ? '11px 20px 11px 20px' :
+                matches.isDesktop && '11px 20px 11px 20px'};
     background-color: transparent;
     font-size: 12px;
     line-height: 14px;
     color: #52555F;
     text-decoration-line: underline;
+`;
+
+export const LogoutIcon = styled.img`
+    height: 16px;
+    width: 16px;
 `;

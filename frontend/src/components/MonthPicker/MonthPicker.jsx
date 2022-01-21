@@ -13,33 +13,48 @@ import {
 import prevArrowIcon from '../../images/prev-arrow.svg';
 import nextArrowIcon from '../../images/next-arrow.svg';
 
-export const MonthPicker = () => {
+import 'moment/locale/ru';
+import moment from 'moment';
+
+export const MonthPicker = ({ switchMonthLeft, switchMonthRight, dateMonth, dateYears }) => {
     const isMobile = useMediaQuery({ minWidth: 320, maxWidth: 767 });
-    const isTabletOrDesktop = useMediaQuery({minWidth: 768})
-    return (
-        <>
-        
-            {isMobile &&
-            <Container>
+    const isTabletOrDesktop = useMediaQuery({ minWidth: 768 })
+    
+return (
+<>
+    {isMobile &&
+        <Container>
             <TitleMobile>Текущий период:</TitleMobile>
             <Switch>
-                <ButtonSwitch type="button" ><ArrowIcon src={prevArrowIcon} alt="prevArrowIcon" /></ButtonSwitch>
-                <SwitchData>ноябрь 2019</SwitchData>
-                <ButtonSwitch type="button" ><ArrowIcon src={nextArrowIcon} alt="nextArrowIcon" /></ButtonSwitch>
+                <ButtonSwitch type="button" onClick={switchMonthLeft}>
+                    <ArrowIcon src={prevArrowIcon} alt="prevArrowIcon" />
+                </ButtonSwitch>
+                    
+                    <SwitchData>{moment(dateMonth).format("MMMM")} {dateYears}</SwitchData>
+                    
+                <ButtonSwitch type="button" onClick={switchMonthRight}>
+                    <ArrowIcon src={nextArrowIcon} alt="nextArrowIcon" />
+                </ButtonSwitch>
             </Switch>
-           </Container>}
-            {isTabletOrDesktop &&
-            <Container>
-                <Title>Текущий период:</Title>
+        </Container>
+    }
+    {isTabletOrDesktop &&
+        <Container>
+            <Title>Текущий период:</Title>
             <Switch>
-                <ButtonSwitch type="button" ><ArrowIcon src={prevArrowIcon} alt="prevArrowIcon" /></ButtonSwitch>
-                <SwitchData>ноябрь 2019</SwitchData>
-                <ButtonSwitch type="button" ><ArrowIcon src={nextArrowIcon} alt="nextArrowIcon" /></ButtonSwitch>
-                </Switch>
-                </Container>
-            }
-        
-    </>
-    )
+                <ButtonSwitch type="button" onClick={switchMonthLeft}>
+                    <ArrowIcon src={prevArrowIcon} alt="prevArrowIcon" />
+                </ButtonSwitch>
+                    
+                    <SwitchData>{moment(dateMonth).format("MMMM")} {dateYears}</SwitchData>
+                    
+                <ButtonSwitch type="button" onClick={switchMonthRight}>
+                    <ArrowIcon src={nextArrowIcon} alt="nextArrowIcon" />
+                </ButtonSwitch>
+            </Switch>
+        </Container>
+    }
+</>
+)
 }
 

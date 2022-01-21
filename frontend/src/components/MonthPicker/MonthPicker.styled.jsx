@@ -58,11 +58,13 @@ height: 10px;
 `;
 
 export const SwitchData = styled.span`
+width: 120px;
 font-style: normal;
 font-weight: bold;
 font-size: 14px;
 line-height: 1.14;
 display: flex;
+justify-content: center;
 align-items: center;
 text-align: center;
 letter-spacing: 0.02em;

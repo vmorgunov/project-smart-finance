@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  transaction: null,
+  transaction: 0,
 };
 
 const transactionSlice = createSlice({

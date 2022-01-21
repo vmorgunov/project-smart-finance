@@ -13,14 +13,16 @@ import {
 import report from '../../images/report.svg';
 import { getAllTransaction } from '../../redux/transactions/transactionSelectors';
 import { incrementByAmount } from '../../redux/transactions/transactionSlice';
+import ModalWelcome from '../ModalWelcome/ModalWelcome';
 
 export const Balance = () => {
   const [value, setValue] = useState('00.00');
+  const [defaultValue, setDefaultValue] = useState('00.00');
   const dispatch = useDispatch();
   const balance = useSelector(getAllTransaction);
   const onClick = e => {
     e.preventDefault();
-    dispatch(incrementByAmount(value));
+    dispatch(incrementByAmount(defaultValue));
   };
 
   useEffect(() => {
@@ -28,17 +30,12 @@ export const Balance = () => {
   }, [balance]);
 
   const handleInputChange = event => {
-    setValue(event.target.value);
+    setDefaultValue(event.target.value);
   };
-
-  // const getVal = text => {
-  //   if (text.length === 7) return `${text.slice(0, 1)} ${text.slice(1)}`;
-  //   if (text.length === 8) return `${text.slice(0, 2)} ${text.slice(2)}`;
-  //   if (text.length === 9) return `${text.slice(0, 3)} ${text.slice(3)}`;
-  // };
 
   return (
     <>
+      {balance === 0 ? <ModalWelcome IsOpen={true} /> : !(<ModalWelcome />)}
       <BalanceWrapper>
         <BalanceText>Баланс:</BalanceText>
         <LabelWrapper>
@@ -58,7 +55,7 @@ export const Balance = () => {
             <>
               <BalanceInput
                 type="text"
-                value={value}
+                value={defaultValue}
                 onChange={handleInputChange}
                 maxLength="20"
                 autoComplete="off"

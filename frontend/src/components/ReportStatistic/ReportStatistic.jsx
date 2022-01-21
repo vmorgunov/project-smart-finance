@@ -1,31 +1,44 @@
-import React   from 'react';
+import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 // import { useDispatch } from 'react-redux';
 // import { useSelector } from 'react-redux';
 
-import { Container, Title, Span, SpanRed, Line } from './ReportStatistic.styled';
+import {
+  Container,
+  ContainerMobile,
+  ContainerDesktop,
+  Title,
+  SpanRedMobile,
+  SpanMobile,
+  Span,
+  SpanRed,
+  LineMobile,
+  Line
+} from './ReportStatistic.styled';
 
 export const ReportStatistic = () => {
-//   function numberWithCommas(x) {
-//   return parseFloat(x)
-//     .toFixed(2)
-//     .toString()
-//     .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ' ');
-// }
-//   const dispatch = useDispatch();
-//   const costs = useSelector();
-//   const income = useSelector();
 
-  // useEffect(() => {
-  //   dispatch();
-  //   dispatch();
-  // }, [dispatch]);
-
-  return (
-    <Container>
-      <Title>Расходы:{<SpanRed>-{} грн</SpanRed>} </Title>
-        <Line />
-      <Title>Доходы:{<Span>+ {} грн</Span>} </Title>
-    </Container>    
+  const isMobile = useMediaQuery({ minWidth: 320, maxWidth: 767 });
+  const isTabletOrDesktop = useMediaQuery({ minWidth: 768 }); 
+  
+   return (
+     <Container>
+       
+       {isMobile && 
+         <ContainerMobile>
+         <Title>Расходы:{<SpanRedMobile>-{} грн</SpanRedMobile>} </Title>
+             <LineMobile />
+         <Title>Доходы:{<SpanMobile>+ {} грн</SpanMobile>} </Title>
+         </ContainerMobile>}
+       
+       {isTabletOrDesktop && 
+         <ContainerDesktop>
+         <Title>Расходы:{<SpanRed>-{} грн</SpanRed>} </Title>
+            <Line />
+        <Title>Доходы:{<Span>+ {} грн</Span>} </Title>
+        </ContainerDesktop> 
+        }   
+    </Container>   
   );
 };
 

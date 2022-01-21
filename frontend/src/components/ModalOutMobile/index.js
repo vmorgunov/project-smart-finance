@@ -1,1 +1,0 @@
-export { ModalOutMobile } from './ModalOutMobile';

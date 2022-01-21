@@ -9,5 +9,8 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
+    display:flex;
+    flex-direction: column;
+    align-items: center;
     margin-right:20px;
 `;
